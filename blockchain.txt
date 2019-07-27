@@ -1,0 +1,2144 @@
+*************7/8*************
+
+pow
+
+pos
+
+dpos
+
+BP(Block producer) = 블록 생성자
+- 21명의 대표자들이 블록을 생성하고 보상을 받는 구조
+
+
+EOS
+
+1라운드에 126개의 블록생성
+0.5초에 1개 생성가능
+
+Staking == 지분 증명
+
+States of EOS token
+
+
+
+EOS 와 이더리움의 차이
+- EOS는 CPU와 네트워크 필요
+- 이더리움은 가스 비용
+- EOS 트랜잭션 비용을 돌려받음
+- 이더리움은 비용을 돌려받지 못함
+
+REX(Resorce Exchange)
+- CPU와 Network 자원을 임대 및 임차할 수 있는 교환 시스템
+- eos 토큰 홀더들은 eos 토큰이나 staked cpu 또는 staked 네트워크를 대여해주고 이에 대한 수익을 얻을 수 있고,
+  Dapp 개발자들은 개발에 필요한 자원(cpu,network)를 저렴한 가격에 임차할 수 있다.
+
+Proxy 
+- 투표권 위임가능
+
+Token holders
+- 여유 eos나 자원을 임대하고 수익 얻을 수 있음
+- eos 토큰이나 자원을 임대하게 되면 Rex라는 토큰으로 변환됨
+
+Developers
+-원하는 자원을 쉽고 빠르게 임차 기본적으로 한 달 단위로 임차 계약을 체결
+- 계약 연장을 할 수 있음
+
+21 : 21명의 bp생성
+30 : eos 스테이킹 했다는
+15 : 15명이상이 동의해야 시스템 변경이나 중대한 사항을 바꿀 수 있음
+3 : 스테이킹했다가 다시 eos로 돌릴때 3day 필요
+1 : 블록체인 데이터를 저장할 때 쓰이는 Ram 1%의 수수료가 필요
+12 : 12글자의 영문아이디를 사용할 수 있음(영문은 소문자, 숫자는 1~6까지)
+5 : 연간 5%의 인플레이션 과정을 거침(계속 증가) 
+- 이중의 1%는 bp보상 나머지 4%는 미정
+0.5 : 0.5초당 블록을 하나 생성
+
+visualstudio code 다운
+
+
+ssh root@183.102.228.122 -p 1022 입력 
+- 서버에 접속
+
+eosio-cpp -version(버전 확인)
+
+cd /home/ibit/baekseok/
+
+git clone https://github.com/EOSIO/eos.git --recursive
+cd /home/ibct/baekseok/eos
+git checkout v1.7.4
+git submodule update --init --recursive
+
+cd /home/ibct/baekseok/scripts
+
+sudo ./eosio_build.sh -y -s EOS
+sudo ./eosio_install.sh              # 빌드가 끝나고 cleos, keosd, nodeos를 설치하는 명령어
+
+
+
+git 
+- 프로젝트 관리에 용이한 시스템
+- 버전 관리에 용이한 시스템
+- 코드를 작성해서 커밋을 하면 git에 등록
+   - 메일도 등록 가능 물론 커밋으로
+- 중간에 문제가 생기면 뒤로 back 할 수 있다
+
+git과 github는 조금 다름
+- git을 통해서 버전관리하고 컴퓨터 로컬에만 저장(개인 컴퓨터)
+- 이것을 호스팅 해주는 것을 github(네트워크에 뿌려주는 것)
+
+git psuh를 통해 원격저장소에 넘겨줌
+git pull로 코드를 받음
+- 협업이 잘됨
+
+git tag를 통해 버전을 쉽게 관리
+
+
+
+
+*******git 명령어 찾아보기*******
+
+
+
+
+--------------------------------------------------------------
+
+오후 시간
+
+keosd : 키 값을 저장해야 함
+
+
+# eos 계정 구성 요소
+- 12자리
+- 숫자 1~5
+- 소문자 영어
+
+# node 구축하려면 3가지가 필요함
+- cleos, keosd, nodeos
+
+# cleos(아래 두 가지로 나뉨)
+- keosd
+- nodeos
+
+owner권한, active권한
+
+# owner 권한(두 가지로 나뉨)
+- public key
+- private key
+
+
+#active 권한
+- private key가
+
+
+#############github 주소
+https://github.com/EOSIO
+
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************7/9*************
+./cleos.sh wallet unlock
+
+# 비밀키, 개인키 만들기
+./cleos.sh create key --to-console
+
+./cleos.sh wallet import      //private key와 public key 넣기 
+                                     //wallet에 key들을 넣어줘야함.
+
+./cleos.sh wallet list
+
+# public key 확인
+./cleos.sh wallet keys
+
+# 잘만들어졌는지 결과 확인
+./cleos.sh. wallet keys
+
+# 계정 생성
+./cleos.sh system newaccount baekseokinit jysjysjysjys EOS8NAueG2jdyNFjX85EVDe1dxq2cQjAahBa22PiuWeL5LAF4ZqJY EOS8NAueG2jdyNFjX85EVDe1dxq2cQjAahBa22PiuWeL5LAF4ZqJY --stake-cpu "10.0000 EOS" --stake-net "10.0000 EOS" --buy-ram "10.0000 EOS"
+
+# 잘 생성 되었는지 확인
+- ./cleos.sh get account jysjysjys123
+
+
+#####30이더를 사용해서 계정을 생성
+
+
+# 이더 보내기 명령어
+
+./cleos.sh get account baekseokinit   // eos 개수 확인
+
+liquid : 거래할 수 있는 eos
+staked : 얼마만큼의 이더가 투표가 되었나
+
+./cleos.sh transfer baekseokinit jysjysjysjys "400.0000 EOS" "memo"
+보내는 사람, 받는 사람, 수량, 메모 4개의 입력 필드가 있으며 메모는 생략해도 무방
+
+---------------------------------------------------------------------
+https://developers.eos.io/eosio-cleos/reference
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+staking == 지분 증명
+- 거래를 위해 스테이킹을 풀려면 언스테이킹을 하게 되는데 여기엔 3일이라는
+  시간이 소요
+---------------------------------------------------------------------
+
+
+
+스테이킹
+./cleos.sh system delegatebw jysjysjys123 jysjysjys123 "50.0000 EOS" "50.0000 EOS"
+                                                                          (CPU 부분)       (NET부분)                      
+
+
+
+
+
+
+account
+1. owner : key
+2. active : key
+
+
+active key = Private key: 5JnGMyyEb3xuqAec6VJdtaevPVhzrqb5RpdPTLRD6ShZtqqZVLS
+owner key = Public key: EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr
+
+--------------------------------------------------------------
+
+*************7/10*************
+
+
+chmod u+x ./*
+
+ssh root@183.102.228.122 -p 1022
+
+cd /home/ibct/baekseok
+
+cd eosio-biosboot
+
+cd node_mongodb
+
+mongo
+
+show dbs
+
+use EOS
+
+show collections
+
+db.blocks.find() .sort({block_num: -1}).limit(5) .pretty()
+
+------------------------------------------------------------------------
+
+오후 수업
+
+
+https://github.com/youngxpepp/node_mongodb.git
+
+https://developers.eos.io/eosio-cleos/reference
+
+보기
+
+full node 
+- 모든 블록을 가지고 있는 노드
+
+right node
+- 부분적인 블록을 가지고 있는 노드
+
+special address
+- localhost를 칭함(127.0.0.1)
+
+
+
+#http_plugin
+-통신을 주고 받는 통로
+- 연결에 있어서 중요한 것
+
+#노드끼리 연결해야할 때 필요한 것
+
+p2p-listen-endpoint = 0.0.0.0:9016
+p2p-server-address = 127.0.0.1:9016
+
+
+/home/ibct/baekseok/eos/build/programs
+
+cd cleos
+
+cleos : 실행시킬 수 있는 프로그램
+
+./cleos.sh
+
+
+
+
+# db.action_traces.find({"act.name" : "transfer"}) .pretty()
+- 트랜잭션아이디부터 여러가지 확인할 수 있음
+- 지금까지 트랜잭션한 내용을 볼 수 있음
+
+
+#본인의 거래 내역 확인하려면
+- db.action_traces.find({"act.name" : "transfer", "act.data.from" : "확인하고 싶은 계정"}) .pretty()
+- db.action_traces.find({"act.name" : "transfer", "act.data.from" : "jysjysjys123"}) .pretty()
+
+./cleos.sh get account
+
+
+unstaking
+- ./cleos.sh system 하면 명령어를 뭘 써야할지 나와있음
+
+
+
+
+# 몽고db의 특징
+- json형태
+- 가독성, 직관적
+
+
+
+
+
+
+
+
+------------------------------------------------------
+javascript
+
+multi-index-table
+
+cleos push action eosio.token transfer
+
+scope : 구분
+
+스마트컨트랙트는 테이블의 값들을 수정하는 행위를 도와주는 코드
+
+-------------------------------------------------------
+cleos 명령어중 데이터를 확인하는 명령어
+- ./cleos.sh get table
+
+ex) ./cleos.sh get table eosio.token baekseokinit accounts
+
+eosio.token(1 계정, 1 컨트랙트)
+본인 계정(범위)   # 스코프
+accounts(테이블 이름)
+
+
+------------------------------------------------------
+토큰의 정보 관리
+
+./cleos.sh get table eosio.token EOS stat
+
+stat(테이블 이름)
+
+
+
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+*************7/11*************
+
+
+biosboot 들어가서
+- git clone https://github.com/youngxpepp/student-node.git
+
+init   
+- ./cleos.sh wallet open   ###kiosd 월렛 오픈
+
+잠겨있는 월렛 언락
+- ./cleos.sh wallet unlock
+
+
+student 수정
+student.json
+
+지갑에서 private key 확인법
+./cleos.sh wallet private_keys 
+
+지갑에서 public key 확인법
+./cleos.sh get account public_keys
+
+토큰있는지 확인
+./cleos.sh get account jysjysjys123
+
+EOS balances 확인
+
+
+**********이걸 하는 이유***********
+student-node : 노드 구축을 위한 파일
+5명의 bp를 선출해서 블록을 생성하도록 노드를 이어주는 작업
+
+여러분의 계정 == bp
+
+투표 - 스테이킹 - eos
+
+
+
+# 스테이킹
+./cleos.sh system delegatebw jysjysjys123 jysjysjys123 "50.0000 EOS" "50.0000 EOS"
+                                                                          (NET 부분)       (CPU부분)     
+
+# bp에 출마하는 명령어
+./cleos.sh system regproducer (본인계정) (계정의 public key)
+./cleos.sh system regproducer jysjysjys123 EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr
+
+# regproducer 잘되는지 확인
+./cleos.sh system listproducers
+
+0.0000이라고 뜨면 투표가 안된것
+
+# 투표하는 명령어
+./cleos.sh system voteproducer prods 본인계정     본인계정
+                                             (투표하는사람) (투표 받는사람)
+./cleos.sh system voteproducer prods jysjysjys123 jysjysjys123
+
+# 블록생성스케쥴 보기
+./cleos.sh get schedule
+
+# 노드 키기
+본인 폴더에 들어가서
+./start.sh         ####블록이 생성되는지 확인하기 위함
+
+
+노드를 켰을 때 생성하지 못함
+why?
+다른곳은 많이 생성했는데 따라가지 못함
+좀 따라간 상태여야 블록을 생성할 수 있음
+블록이 많을수록 시간이 오래걸림 (시간단위가 될수도있고 며칠사이로 걸릴 수 있음)
+블록을 개수단위로 생각하는게 편함
+
+
+------------------------------------
+오후수업
+
+REX(Resource Exchange)
+
+- cpu 10000.0000 EOS
+- net 5000.0000 EOS
+
+현재 1개당 5400원
+
+DAPP 개발자는 많은 EOS가 필요
+
+많은 자원을 한번에 구매하기엔 부담감이 있는 사람들
+
+REX는 작은 수수료로 대여할 수 있음
+
+15000.0000 EOS를 사지 않아도 적은 수수료로 CPU와 NET을 30일간 대여 가능하며
+추가적인 날짜갱신도 설정할 수 있음
+
+빌리는걸 rend라고 함
+
+
+
+rex pool 
+총 EOS : 총 발행된 REX
+비율이 1:10 이라고 했을 때
+3000.0000 : 30000.0000
+
+100.0000 EOS -> REX   렉스에게 빌려주면
+REX <- 1000.0000 REX  천개의 렉스코인을 줌
+
+3100 : 31000
+
+500 REX -> 50 EOS
+
+비율이 달라질 때가 있음
+- 자원을 CPU와 NET를 빌릴 때 발생하는 수수료
+
+
+
+
+10 EOS : 100 REX
+
+10개의 EOS를 임대
+-> 20 EOS : 200 REX
+
+누군가 20 EOS 를 rex pool로 냈으면
+
+40 EOS : 200 REX
+1 : 5
+
+저 100 REX -> EOS
+
+가장 처음에 10 EOS -> 100 REX
+
+누군가 자원을 임차해서 수수료가 rex pool로 들어감
+
+100 REX -> 20 EOS
+
+수익: 20 - 10 = 10 EOS
+
+
+
+자원 수수료
+이름 경매
+램 거래 수수료(램은 1%의 거래 수수료를 가져감)
+
+
+1. EOS 임대
+2. staking
+
+
+
+# NVM(node version manager)
+- 우리 서버에 nvm을 설치
+
+# visual studio code 아무 폴더에서 다음 명령어 입력
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash 입력
+
+source ~/.bashrc    
+
+#  .bashrc 
+이미 로그인한 시점에서 새로운 콘솔창(세션)을 열때 실행.
+
+
+nvm install --lts  # node.js lts버전 다운
+
+설치 후
+
+nvm ls           // 버전 확인
+
+nvm use v10.16.0        // 버전 교체
+
+node --version     //사용하고 있는 node.js 확인   // 아무 디렉터리에서나 가능
+
+
+
+--------------------------------------
+간단하게 js 코딩
+
+baekseok 디렉터리에 아무 디렉터리 생성
+
+SSH FS -qqq 오른쪽 클릭 new folder 후 아무 폴더 생성
+
+생성한 폴더에 new file 클릭 후 helloworld.js로 파일 생성
+
+helloworld.js에
+
+자스 실행시키려면
+
+node helloworld.js 하면  파일 내용 볼 수 있음
+
+
+
+-------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************************7/12***************************
+
+npm(node project manager)
+- 사람들이 만든 코드를 쉽게 가져오는 모듈
+- 패키지 관리 및 배포 시스템
+
+nvm : nodejs의 버전을 관리
+npm : nodejs의 패키지를 관리
+
+
+# nodejs에 바로 설치
+- yum install
+
+yum list nodejs
+- 이렇게 하면 하나의 노드버전만 사용할 수 있음
+- 버전관리가 어려움
+- 이때문에 버전관리를 효율적으로 하기 위한것이 nvm
+
+
+nvm alias default v10.16.0  // lts버전을 default로 설정
+
+
+
+-------------------------------------------
+
+# 환경설정
+
+cd /home/ibct/baekseok/jys/eosjs-example
+
+
+npm init -y
+
+npm install --save eosjs node-fetch util dotenv
+
+./cleos.sh push action contract action
+
+https://github.com/EOSIO/eosjs/tree/master/docs
+
+
+
+jys폴더에 eosjs-example폴더 만든 후 
+main.js파일 생성
+- 자료실 코드 복붙
+
+rpc란?
+
+
+8011을 쓰기위해서는 init을 해줘야함
+
+
+
+
+----------------------------------------------------------------
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+require('dotenv').config({ path: '.env' });
+
+let privateKeys = [];
+const rpc = new JsonRpc('http://127.0.0.1:8011', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {
+    try {
+        const result = await rpc.get_info();     //여기서 에러가 감지되면
+        //wait
+
+        console.log(result.head_block_num);
+
+        let blocknum = result.head_block_num;
+
+        const result2 = await rpc.get_block(blocknum);
+        console.log(result2);
+
+        } catch (error) {
+        console.error(error); //여기서 에러가 출력됨
+        }
+}
+
+function myF() {
+    main();
+
+    for(let i=0; i < 20; i++) {
+        console.log('waiting');
+    }
+}
+
+myF();
+----------------------------------------------------------------------
+
+
+***** 계정 잔액 확인 1 ********
+
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+require('dotenv').config({ path: '.env' });
+
+let privateKeys = [];
+const rpc = new JsonRpc('http://127.0.0.1:8011', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {          //계정 잔액 확인
+    try {
+        const result = await rpc.get_table_rows({
+        code: 'eosio.token',
+        table: 'accounts',
+        scope: 'jysjysjys123'
+        });
+        
+        console.log(result);
+        } catch (error) {
+        console.error(error);
+        }
+}
+
+
+    main();
+
+
+
+
+const result = await rpc.get_table_rows({
+        code: 'eosio.token',
+        table: 'accounts',
+        scope: 'jysjysjys123'
+        });
+
+//이 부분
+
+--------------------------------------------------
+
+
+
+***** 계정 잔액 확인 2 ********
+
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+require('dotenv').config({ path: '.env' });
+
+let privateKeys = [];
+const rpc = new JsonRpc('http://127.0.0.1:8011', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {          //계정 잔액 확인
+    try {
+        const result = await rpc.get_currency_balance('eosio.token', 'jysjysjys123', 'EOS')
+        
+        
+        console.log(result);
+        } catch (error) {
+        console.error(error);
+        }
+}
+
+
+    main();
+
+const result = await rpc.get_currency_balance('eosio.token', 'jysjysjys123', 'EOS')
+
+//이부분
+
+--------------------------------------------------------------------------
+
+# 송금 
+
+# let privateKeys 부분에 자신의 개인키를 작성
+
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+require('dotenv').config({ path: '.env' });
+
+let privateKeys = ['5JnGMyyEb3xuqAec6VJdtaevPVhzrqb5RpdPTLRD6ShZtqqZVLS'];
+const rpc = new JsonRpc('http://127.0.0.1:8011', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {          
+    try {
+        const result2 = await rpc.get_currency_balance('eosio.token', 'jysjysjys123', 'EOS');
+        console.log(result2);
+        const result = await api.transact({
+            actions: [{
+              account: 'eosio.token',
+              name: 'transfer',
+              authorization: [{
+                actor: 'jysjysjys123',
+                permission: 'active',
+              }],
+              data: {
+                from: 'jysjysjys123',
+                to : 'wjdwlsgks123',
+                quantity: '1.0000 EOS',
+                memo: 'AAAAAAA',
+              },
+            }]
+          }, {
+            blocksBehind: 3,
+            expireSeconds: 30,
+          });
+
+          const result3 = await rpc.get_currency_balance('eosio.token', 'jysjysjys123', 'EOS');
+          console.log(result3);
+
+        }catch (error) {
+        console.error(error);
+        }
+}
+
+
+    main();
+
+
+---------------------------------------------------------------------
+
+# 컨트랙트 배포
+
+visualcode 
+- eosio-biosboot/contracts/의
+eosio.token.abi 와 eosio.token.wasm 을 배포
+
+init 폴더에서 다음코드 작성
+
+./cleos.sh set contract jysjysjys123 /home/ibct/baekseok/eosio-biosboot/contracts/eosio.token/
+
+---------------------------------------------------------------------
+
+# 배포 확인
+
+./cleos.sh get abi jysjysjys123
+
+
+---------------------------------------------------------------------
+
+# 토큰 만들기 (내계정에 보내기)
+
+./cleos.sh push action jysjysjys123 create '["jysjysjys123", "1000000000.0000 JYSJYSJ"]' -p jysjysjys123
+                                          액션의이름
+---------------------------------------------------------------------
+
+# 토큰이 잘만들어졌는지 확인
+
+./cleos.sh get table jysjysjys123 JYSJYSJ stat
+
+JYSJYSJ 는 토큰심볼
+---------------------------------------------------------------------
+
+# 토큰 발행
+
+create가 아니라 issue로 작성
+
+to : 누구한테 발행할 것인지
+
+quantity : 얼마나 발행할 것인지 (ex : 1000.0000 JYSJYSJ)
+
+memo : 아무렇게나
+
+./cleos.sh push action jysjysjys123 issue '["jysjysjys123", "1000.0000 JYSJYSJ", "aaaa"]' -p jysjysjys123
+
+#### 본인 계정에 ISSUE 하는게 마음편함
+---------------------------------------------------------------------
+
+# 잔액 확인
+
+./cleos.sh get table jysjysjys123 jysjysjys123 accounts
+                       (컨트랙계정) (잔액확인할계정)
+컨트랙계정 : 토큰의 주인
+---------------------------------------------------------------------
+
+# 송금
+
+transfer
+
+from
+to
+quantity
+memo
+
+-p from
+
+./cleos.sh push action jysjysjys123 transfer '["jysjysjys123", "wjdwlsgks123" "1000.0000 JYSJYSJ", "aaaa"]' -p jysjysjys123
+---------------------------------------------------------------------
+
+# 잔액확인
+
+./cleos.sh get table 컨트랙트계정 잔액을 확인할계정 accounts
+./cleos.sh get table wjdwlsgks123 jysjysjys123 accounts
+
+
+### 내 계정에 wjdwlsgks123이 만든 코인의 잔액을 확인.
+---------------------------------------------------------------------
+
+# 몽고디비 접속
+
+cd node_mongodb/
+
+mongod
+
+./start 
+
+bg  (백그라운드에서 작업)
+
+./cleos.sh get info
+
+ps -ef | grep mongodb
+
+mongo sheel       == mongo라고 쳐도 가능
+
+use EOS
+
+show collections
+
+//토큰 주고받은 기록 찾아보는것
+db.action_traces.find() .pretty()    
+
+//토큰 주고받은 기록 찾아보는것
+db.action_traces.find( {"act.account" : "jysjysjys123", "act.name": "transfer"}) .pretty()
+
+//create도 확인 가능
+db.action_traces.find( {"act.account" : "jysjysjys123", "act.name": "create"}) .pretty()
+
+//issue도 확인 가능
+db.action_traces.find( {"act.account" : "jysjysjys123", "act.name": "issue"}) .pretty()
+
+
+//transfer나 issue는 메모도 확인 가능하다.
+
+
+---------------------------------------------------------------------
+
+https://github.com/youngxpepp/mongoose-example.git
+
+본인의 작업폴더 - cd /home/ibct/baekseok/jys
+
+git clone https://github.com/youngxpepp/mongoose-example.git
+
+ls
+
+ls하면 mongose-example가 있음(nude.js 패키지 중 하나)
+
+cd mongose-example
+
+npm install
+
+node main.js
+
+
+---------------------------------------------------------------------
+
+mongoose-example 폴더 main.js
+
+const Action = require('./models/action_traces.js'); 
+
+밑에 아래 코드 추가
+
+try {
+        const result = await Action.find({'act.account' : 'jysjysjys123', 'act.name' : 'transfer'});
+        console.log(result);
+    } catch (error) {
+       console.error(arror);
+       return; 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+# eosio.token이 어떻게 이루어져 있는가
+
+eosio.token - contract
+
+table - stat : tokenl 정보
+       - account : 계정 잔액
+
+주는 사람이 ram을 지불하기 때문에 받는 사람은 ram을 가지고 있지 않아도 된다
+하지만 다음사람에게 보낼 때는 ram을 가지고 있어야한다.
+
+staking을 하여 cpu와 net를 얻음
+
+cpu와 net의 자원이 규제되어 있음
+- ddos, 해킹을 방지하기 위해
+
+ram
+- 정보는 bp의 hdd의 저장
+- 그 비용에 대한 수수료
+
+ram,cpu,net
+
+cpu의 단위 : 시간
+net의 단위 :
+ram의 단위 :
+
+
+**EOS의 NET, CPU, RAM이 무엇인지 찾아보기 **
+
+---------------------------------------------------------------------
+####github#####
+
+https://github.com/EOSIO/eosio.contracts/blob/master/contracts/eosio.token/src/eosio.token.cpp
+
+https://eosio.github.io/eosio.cdt/1.6.0/namespaceeosio.html 
+여기서 코드 참조 
+
+void token::transfer( const name&    from,
+                      const name&    to,
+                      const asset&   quantity,
+                      const string&  memo )
+{
+    check( from != to, "cannot transfer to self" );
+    require_auth( from );    //보내는 사람이 같은지 확인  
+    check( is_account( to ), "to account does not exist"); //is_account(to) : 실제 존재하는 것인지 확인
+    auto sym = quantity.symbol.code();   //auto 자동으로 바뀜  //sym ㅅ심볼
+    stats statstable( get_self(), sym.raw() );   //stats = table 
+    const auto& st = statstable.get( sym.raw() );   // 검색해서 반환값을 st변수에 담음 
+
+
+   check( quantity.is_valid(), "invalid quantity" );
+    check( quantity.amount > 0, "must transfer positive quantity" ); // quantity.amount가 0보다 큰지 확인 틀리다면 다음 칸 실행
+    check( quantity.symbol == st.supply.symbol, "symbol precision mismatch" );   
+    check( memo.size() <= 256, "memo has more than 256 bytes" );
+
+asset : amount, symbol
+
+만약 10.0000 EOS 되면 어마운트가 10.0000
+
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+******7/15******
+
+오늘 해야 할 것
+
+1. 각 서버끼리 노드 연결 구축
+2. git
+3. eosjs 프로젝트
+
+
+------------------------------------------------
+
+baekseok에서
+- rm -rf eosio-biosboot
+
+ls
+
+git clone  https://github.com/youngxpepp/eosio-biosboot.git
+
+git branch
+
+git ckeckout student
+
+git branch        // branch의 목록확인
+
+git checkout student        //student branch로 이동
+
+---------------------------------------------------------------------
+
+git branch <enter> => 저장소안의 branc정보를 보여줌, *표가 현재 branch임.
+*master => 처음 자동으로 생성한 브렌치는 무조건 마스터 브렌치임
+
+git branch <new_branch name> <enter> =>현재 브렌치 내용을 새로운 브렌치로 복사한다. 단 저장소 내에서 
+git branch <enter> =>새로 복제된 브렌치를 포함하여 저장소안의 전체 브렌치 정보를 보여준다. 
+=>*가 표기된 브렌치가 현재 작업영역과 연결된 브렌치이다. 
+
+git checkout <branch name> <enter>
+=> 저장소에서 작업영역으로 브렌치내용을 복사해온다.
+=> 작업영역에서 기존에 브렌치에 저장된 파일은 삭제된다.
+=> 새로운 브렌치에서 작업해야할 경우에사용한다.
+
+작업영역에서 파일을 수정한다. 
+git add <수정된 파일이름> <enter>
+git commit -m "커밋 메시지" <enter> 작업영여의 내용을 저장영역의 브렌치에 저장한다.
+
+---------------------------------------------------------------------
+
+git checkout -b <new branch> <enter>
+=> 현재 브랜치의 저장소에 있는 내용을 복사하여 새로운 브렌치를 만들고 
+=> 작업브렌치를 변경하여 작업영역으로 복사된 새로운 브렌치의 내용을 복사해온다.
+
+git branch <enter> => 현재 작업영역의 브렌치 이름을 확인한다. 
+
+*현재 디렉토리에서 파일작업을 한다, 파일수정을 한다. 
+
+git add <파일이름> <enter>
+git commit -m <커밋 메시지> <enter>
+git log <enter> => 커밋 기록을 확인한다. 
+git branch < enter> => 브렌치를 확인한다. 
+
+
+git branch -d <비 작업영역의 삭제하고자 하는 브렌치이름> <enter> =>branch를 삭제한다. 
+=>error, ex2 is not fully merged. run git branch -D <branc>
+
+git branch -D <비 작업영역의 삭제하고자 하는 브렌치이름> <enter> =>branch를 삭제한다. 
+
+git branch <enter> => branch가 삭제되었는지 확인한다.
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+# ip, port add
+
+192.168.1.75:9010~9015
+
+내포트 : 192.168.1.75:9012
+---------------------------------------------------------------------
+
+# 5개의 노드 연결 확인
+./cleos.sh get info
+
+# node_1 ~5 와 student_1~5 를 다 시작해야함
+./start.sh
+
+노드를 잇기위해 그냥 포트만 변경하면 ./cleos.sh가 제대로 실행안됌
+
+하기 위해서는 bp선언과 스테이킹
+
+
+
+#student-node/student_2 cleos.sh#
+
+* cleos.sh 수정
+NODEHOST="192.168.1.75"
+NODEPORT="8011"
+WALLETHOST="127.0.0.1"
+WALLETPORT="8899"
+
+NODEHOST, NODEPORT 변경
+
+# 지갑 키기(설정)
+cd ..
+
+ls
+
+cd wallet
+
+./start_wallet.
+
+cd ..
+
+cd node_5
+
+ls
+
+./cleos.sh wallet create --to-console
+
+cd system
+
+visualcode에서 system - 00_WALLET_IM...에
+./cleos.sh wallet unlock --password $WALLET_PWD 주석처리
+
+./00_WALLET_IMPORT.SH
+
+# 계정 생성
+나의 student폴더에서
+./cleos.sh system newaccount baekseokinit jysjysjys123 EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr --stake-cpu "10.0000 EOS" --stake-net "10.0000 EOS" --buy-ram "10.0000 EOS"
+
+# 개인의 키 생성
+./cleos.sh create key --to-console
+
+active key = Private key: 5JnGMyyEb3xuqAec6VJdtaevPVhzrqb5RpdPTLRD6ShZtqqZVLS
+owner key = Public key: EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr
+
+----------------------------------------------------------------------
+
+# bp 선출
+
+ifconfig 하면 
+- 192.168.1.68(사설 ip주소)이 출력
+
+./cleos.sh transfer baekseokinit jysjysjys123 "100000.0000 EOS" "memo"
+
+./cleos.sh system regproducer jysjysjys123 EOS8M8gtJwGuckR6kuAGUwnYsRPg7jiSXBqwvMABF3ixs2bpT1FbH
+
+./cleos wallet import  //private키 넣기
+
+----------------------------------------------------------------------
+
+# staking
+
+./cleos.sh system delegatebw jysjysjys123 jysjysjys123 "50000.0000 EOS" "50000.0000 EOS"
+
+./cleos.sh get account 본인계정 //잔액 확인
+
+----------------------------------------------------------------------
+
+# 투표 
+
+./cleos.sh system voteproducer prods 본인계정(투표자) 본인계정(bp 후보자)
+
+./cleos.sh get schedule
+
+./cleos.sh system listproducers
+----------------------------------------------------------------------
+
+student_~ 의 student.json 파일에
+계정, pri, pub key 입력
+
+./start.sh
+
+
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+student_2(내 폴더) bp로 만들기
+----------------------------------------------------------------------
+# cleos.sh 수정
+
+student_2 폴더 cleos.sh 변경
+
+NODEHOST="ifconfig해서 나온 서버 ip"
+NODEPORT="bp의 포트"    --8023
+
+# config.ini 파일 내용 변경
+
+p2p-peer-address = 192.168.1.68:9023
+
+- p2p-peer-address = 자신의 ip주소:9023      //9023는bp의 포트)
+
+cd student_2 에서
+
+./cleos.sh get info
+
+./cleos.sh transfer baekseokinit jysjysjys123 "100000.0000 EOS" "memo"
+
+ps -ef | grep keosd
+
+./cleos.sh wallet import
+
+./cleos.sh system delegatebw jysjysjys123 jysjysjys123 "50000.0000 EOS" "50000.0000 EOS"
+----------------------------------------------------------------------
+
+# student_2 bp로 출마
+
+
+./cleos.sh system regproducer jysjysjys123 EOS7dmRYLqFy9jPC9oKTxhCLbgQuGh9HncV3Yp1qS5gmAqW92tKqr
+
+
+----------------------------------------------------------------------
+
+# 투표
+
+./cleos.sh system voteproducer prods jysjysjys123 jysjysjys123
+
+# 확인 
+
+./cleos.sh system listproducers 
+
+
+# cleos.sh 파일
+- NODEPORT번호 내 번호로 바꿈 8022    
+
+./start.sh
+
+
+./cleos.sh get info
+
+./cleos.sh  system listproducers
+
+./cleos.sh get schedule
+
+
+
+
+------------------------------------------------------
+*** noneproducer ***
+
+start.sh에서
+
+-p부터 지워짐
+
+config.ini 에서
+
+p2p-max-nodes-per-host = 100
+allowed-connection = any
+max-clients = 150
+connection-cleanup-period = 30
+network-version-match = 0
+sync-fetch-span = 2000
+
+는 다 지워주고
+
+p2p-peer-address = 192.168.1.68:9023    9023부분 bp의 포트로 바꿔줌 9023은 그대로임
+
+cleos.sh 수정
+- 본인포트로 변경
+
+다하고
+
+./start.sh 돌려기
+
+./cleos.sh get info 로 잘돌아가는지 확인
+----------------------------------------------------------------------
+
+** 7/16 **
+
+##오늘 할 것##
+
+git으로 프로젝트 어떻게 하는지 (이건 서버로 함)
+
+
+# 내 작업 폴더에서 작업
+cd /home/~~jys
+
+mkdir git-tutorial      //관행(글씨를 쉽게 알아볼 수 있게)
+
+git init
+
+ls -la     //하면 .git이 나와야함
+
+# 로컬저장소와 원격저장소랑 연결
+
+github접속
+
+새로운 원격저장소 생성(레퍼지스토리)
+
+# 내 레퍼지스토리를 원격저장소랑 연결
+git remote add origin https://github.com/jinyeanseok/git-tutorial.git
+
+git remote    // 원격저장소가 생긴걸 확인할 수 있음
+
+/*---------------------------------------------------------------------
+git은 시스템
+github는 git을 통해 만들어진 작업물을 호스팅
+remote로 local과 연결만 함
+---------------------------------------------------------------------*/
+
+# 파일 등록하기
+
+git add .
+
+git status
+
+git config user.name "jinyeanseok"
+
+git config user.email "wdtcwek11@naver.com"
+
+git commit -m "init"    //메시지를 작성할 수 있는 기능
+
+git log     # commit 확인
+
+git push origin master
+
+
+## 파일을 1에서 2로 수정
+
+git status
+
+git add .     //수정된 파일이 commit할 준비가 됨
+
+git status 
+
+git commit -m "add.2"     
+
+git add .
+
+git commit -m "add 3"
+
+git push origin master
+
+## commit하고 push할 필요없고 중첩이 되기에 일일이 하나씩 할 필요 x
+
+
+# git 복구하는법
+visualcode 내용 수정
+
+git status
+
+git checkout .     //index에 올리기전에만 먹히는 명령어
+
+다시 1234로 수정
+
+git add .
+
+git commit -m "add 4"
+
+# 중간에 빠진게 있어서 다시 12345로 수정
+
+git add .
+
+# 이상태에서 원상복구하려면(다시 1234로 하려면)
+
+git reset .
+
+git status
+
+# commit 취소하는 법
+
+git log 
+
+## add2로 돌아갈거임
+
+## add2의 commit 이 필요함
+
+commit : be158342b1756ed95b34a5a17540cdb0706369fd
+
+git reset --hard be158342b1756ed95b34a5a17540cdb0706369fd
+
+git log
+
+git push origin master -f (-f:강제)
+
+----------------------------------------------------------------------
+
+add 3 
+
+add 4
+
+git push
+
+
+----------------------------------------------------------------------
+
+# 삭제 하는 법
+
+rm -rf git-tutorial/
+----------------------------------------------------------------------
+
+# branch 만들기
+
+cd git-tutorial/
+
+git checkout -b test
+
+git branch
+
+git checkout master   //branch 전환
+
+git branch
+
+git checkout test
+
+파일 추가, 수정 (test.txt)
+
+git add .
+git commit -m "add a new branch"
+
+git push origin test
+----------------------------------------------------------------------
+
+# test에서 master로 다시 병합(이렇게하면 master를 다치게하지 않고 test에서 실행 가능)
+
+git checkout master
+
+git branch
+
+git merge test   //merge하면 commit도 자동으로 만들어짐
+
+git push origin master
+
+git checkout test
+
+## helloworld, test.txt파일 두군데에서 아랫줄에 test추가
+
+git add .
+
+git commit -m "add test"
+
+git push origin master
+
+----------------------------------------------------------------------
+
+# 레퍼지 지우는법
+github - setting - danger zone - 레퍼지스토리 이름 입력
+
+----------------------------------------------------------------------
+
+# eos.hs project 만들기
+
+1. 30만번째 블록의 프로듀서와 생성 시간을 가져오기
+2. 해당 블록 프로듀서의 계정 생성 시간 가져오기
+3. 해당 블록 프로듀서의 EOS 잔액
+
+eosjs
+
+# github 만들기
+
+cd jys
+
+mkdir eosjs-simple-project
+
+cd eosjs-simple-project/
+
+git init
+
+git config user.name jinyeanseok
+
+git config user.email wdtcwek11@naver.com
+
+# visualcode jys 폴더에 eosjs-simple-project에서 file생성해서 problem1~3 생성
+
+npm init -y     // npm init으로 패키지를 관리하겠다
+
+# ls -al 하여 package.json이 생성되었는지 확인해야함
+
+npm install --save eosjs node-fetch util      // global은 전체  local은 eosjs-simple-project만 설치
+
+node_modules가 생김 (이패키지들은 git에 올릴필요가 없음 저장공간낭비)
+
+ eosjs-simple-project에서  .gitignore 생성
+- 자동으로 무시를 할 수 있음 node-modules를
+- gitignore에 node_modules/ 입력     ///이렇게 하면 gitignore는 github에 안올라감
+- node_modules/ 를 한 이유는 node_modules/를 올리지 않겠다는 뜻
+
+git add .
+git commit -m "init"
+
+git remote add origin https://github.com/jinyeanseok/eosjs-simple-project.git
+
+git push origin master
+
+---------------------------------------------------------------------
+
+problem1~3.js에 아래 코드 작성 (3개 모두)
+
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+
+let privateKeys = [];// user private keys
+const rpc = new JsonRpc('http://192.168.1.75:8010', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {
+
+}
+
+
+---------------------------------------------------------------------
+
+# eos.hs project 만들기
+
+1. 30만번째 블록의 프로듀서와 생성 시간을 가져오기
+
+async function main() {    //async가 있어야 await을 사용할 수 있음
+    try {
+        const result = await rpc.get_block(300000);
+        console.log(result.producer);
+        console.log(result.timestamp);
+    } catch (error) {
+        console.error(error);
+        
+    }
+}
+main();
+
+2. 해당 블록 프로듀서의 계정 생성 시간 가져오기
+
+async function main() {   
+        
+    try {
+    const result = await rpc.get_block(300000);
+    const account = result.producer;
+    const result2 = await rpc.get_account('baekseok1115');
+    console.log(result2.created);
+     
+ } catch (error) {
+     console.error(error);
+     
+ }
+}
+main();
+
+3. 해당 블록 프로듀서의 EOS 잔액
+
+
+async function main() {    //async가 있어야 await을 사용할 수 있음
+    try {
+        const result = await rpc.get_block(300000);
+        console.log(result.producer);
+        console.log(result.timestamp);
+    } catch (error) {
+        console.error(error);
+        
+    }
+}
+main();
+
+4. 현재 블록을 "실제"로 생산하는 BP들 출력
+
+hint : javascript의 배열 사용!!!
+hint : get_info
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+node *1.js
+
+git add .
+
+git commit -m "problem1"
+
+git push origin master
+---------------------------------------------------------------------
+
+** 7/17 **
+
+1. 실제 블록을 생산하는 BP 출력
+2. 스마트 컨트랙트
+3. 직접 배포
+
+6개의 블록 연속 생성
+12개
+BP 한 명당 6초
+
+한 라운드 126초
+한 라운드 21 * 12
+X = BP 수
+
+
+
+
+
+
+4. 실제 블록을 생산하는 BP 출력   (problem4.js)
+
+
+const { Api, JsonRpc, RpcError } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
+const { PrivateKey, PublicKey, Signature, Aes, key_utils, config } = require('eosjs-ecc');
+const { TextEncoder, TextDecoder } = require('util');
+const fetch = require('node-fetch');
+
+let privateKeys = [];// user private keys
+const rpc = new JsonRpc('http://192.168.1.75:8010', { fetch });
+const signatureProvider = new JsSignatureProvider(privateKeys);
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
+async function main() {
+let arr = []; //실제로 블록을 생성하는 bp를 넣을거임
+try {
+const info = await rpc.get_info();
+const firstBP = info.head_block_producer;         // 시작점을 알아야 라운드를 얼마나 도는지 확인가능
+const firstBlockNumber = info.head_block_num;     //
+arr.push(info.head_block_producer); //실제 bp목록
+while(1) {  //블록이랑 bp랑 블록넘버를 게속 받아오기 위함
+const info = await rpc.get_info();
+const nextBP = info.head_block_producer;
+const nextBlockNumber = info.head_block_num;
+if(arr[0] === nextBP) { //first bp랑 nextbp랑 비교
+if(nextBlockNumber >= firstBlockNumber + 12) //현재 블록넘버랑 처음에 했던 블록넘버랑 비교
+//12를 더해주는 이유는 12개의 블록을 생성 12개가 한번 더 지나면 한 라운드를 다 돌았기 떄문
+break;
+} else {
+if(arr.indexOf(nextBP) == -1)
+arr.push(nextBP);
+}
+}
+for(let i=0; i<arr.length; i++)
+console.log(arr[i]);
+} catch (error) {
+console.error(error);
+}
+}
+
+main();
+
+---------------------------------------------------------------------
+
+# 스마트 컨트랙트
+
+eosio-cpp -version (버전이 1.6.1인걸 확인)
+
+자기폴더안에 contracts생성
+
+그 안에 helloworld 폴더 생성
+
+그 안에 helloworld.cpp 파일 생성
+
+
+helloworld.cpp에 다음 코드 작성
+-----------------------------------------------
+#include <eosiolib/eosio.hpp>
+
+using namespace eosio;
+
+CONTRACT helloworld: public contract {  //클리스 구조
+    public:
+        using contract::contract;
+
+        ACTION hi(name user) {
+            print("hello, ", user);
+        }
+        
+    private :
+};
+---------------------------------------
+
+cd /jys/contracts/helloworld
+
+eosio-cpp -o helloworld.wasm helloworld.cpp (빌드)
+
+ls
+
+.abi .wasm 이 생겼는지 확인
+
+
+student 폴더 들어가기
+
+./cleos.sh wallet import
+
+
+./cleos.sh set contract jysjysjys123 /home/ibct/baekseok/본인작업폴더(jys)/contracts/helloworld
+
+잘됐는지 확인하려면 
+
+./cleos.sh get abi jysjysjys123
+
+//student_2
+./cleos.sh push action jysjysjys123 hi '["jysjysjys123"]' -p jysjysjys123
+print("hello, ", user) 아래에
+require_auth(user); 추가
+
+helloworld폴더
+rm -rf *wasm *abi
+
+eosio-cpp -o helloworld.wasm helloworld.cpp (빌드)
+
+cat helloworld.cpp
+
+# helloworld 폴더
+rm -rf *wasm *ab (빌드)
+// 이명령어전에 rm -rf *wasm *abi로 삭제하고 빌드해야함 
+
+
+# 배포하기 (배포는 한번만 가능)
+
+student_2폴더에서
+
+./cleos.sh set contract jysjysjys123 /home/ibct/baekseok/jys/contracts/helloworld/
+
+./cleos.sh push action jysjysjys123 hi '["baekseokinit"]' -p jysjysjys123 // (오류나는게 정상) '["baekseokinit"]' -p jysjysjys123 둘이 다르게 떄문
+
+
+*** 빌드를 하고 배포해야함 ***
+
+//student_2    //
+./cleos.sh push action jysjysjys123 hi '["jysjysjys123"]' -p jysjysjys123
+
+
+# 배포한 본인말고 실행못하게 수정
+
+- 2가지 방법이 있음
+
+require_auth("jysjysjys123"_n);
+           
+
+check(has_auth( get_self() ), "you aint a contract deployer!!");
+
+
+# 내가 지정한 사람만 액션을 실행할 수 있도록 하기
+
+2명 이상
+
+has_auth
+
+&&
+
+check
+
+답 :
+
+check(has_auth(get_self()) || has_auth("wjdwlsgks123"_n) , "you aint a contract deployer!!");
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* 7/18 *
+
+## 
+1 : multi_index table (자료구조 중 하나)    //블록체인안에 db를 만든다고 생각하면 편함
+
+
+
+첫 번째 : 계정 및 컨트랙트(contract)
+- 계정은 여러 테이블을 가질 수 있음
+
+두 번째 : 테이블 이름(table)
+
+세 번째 : 범위(scope)
+
+table 과 scope는 개발자가 정의
+
+
+typedef eosio::multi_index<"people"_n, person> address_index;
+                                    테이블이름  구조체이름
+
+
+modify 를 하고 싶으면
+
+________________________________________________
+find or get : 원하는 정보를 찾는다
+
+modify or erase : 정보를 수정하거나 삭제
+
+emplace : 원하는 정보를 저장한다.     //이 3개를 알아야 스마트컨트랙트 가능
+________________________________________________
+
+
+---------------------------------------------------------------------
+
+# visualstudiocode 단축키
+
+컨트롤 시프트 k   // 해당 커서 라인 지우기
+
+컨트롤 백스페이스 // 단어단위로 지우기
+
+알트 시프트 방향키  //복사
+
+홈 엔드키  //라인의 처음이나 끝 가고싶을때 fn키 눌러야함
+
+알트 백스페이스
+
+컨트롤 시프트 o    터미널 분할
+---------------------------------------------------------------------
+
+# insert 
+
+배포하고
+
+./cleos.sh push action jysjysjys123 insert '["jysjysjys123", "jin", "yeanseok", "25"]' -p jysjysjys123
+
+
+./cleos.sh get table jysjysjys123  jysjysjys123 people
+
+
+---------------------------------------------------------------------
+
+action
+	hi : allowance에 등록된 계정만 이 액션을 실행할 수 있다
+	insert : allowance에 계정 등록   //컨트랙트 배포자만 실행할 수 있도록
+	remove : allowance에 계정 삭제  //컨트랙트 배포자만 실행할 수 있도록
+table
+	allowance {
+		name user;
+		uint64_t primary_key() const {
+			return user.value;
+		}
+	}
+
+scope : get_self() .value
+---------------------------------------------------------------------
+
+** 7/19 **
+
+1. multi_index table의 secondary index
+2. 함수 erase 사용해서 모든 정보 지워보기
+---------------------------------------------------------------------
+
+문제
+
+1. action
+countuser(name user) : user 본인만 해당 액션을 실행할 수 있음.
+이 액션을 실행할 때마다 table의 count 변수를 1씩 증가시킴. table의 count 변수를
+1씩 증가시킴. table의 count 변수는 user마다 하나씩 갖고 있도록 해야함
+
+findcount(uint64_t count)
+
+: secondary index로 등록된 count 찾아서 계정 이름 출력
+
+eraseall()
+
+: table의 모든 정보 삭제 (erase 함수 이용)
+
+address_index forErase.begin()(get_self(), get_self().value);
+//begin : 처음   end : 마지막 for문 돌려서
+
+
+2. table
+counttable : primary key는 user.value.
+scope는 get_self() .value
+추가적으로 uint64_t count라는 변수를 갖고 있고, 이를 secondary index로 만들것
+
+---------------------------------------------------------------------
+
+** 7/22 **
+
+1. on_notify
+2. inline action
+3. 문제 풀이
+---------------------------------------------------------------------
+
+visualcode 
+
+indent - rainbow 설치
+
+bracket pair 설치
+
+material theme
+
+---------------------------------------------------------------------
+
+eosio-cpp -o onnotify.wasm onnotify.cpp
+
+./cleos.sh set contract jysjysjys123 /home/ibct/baekseok/jys/contracts/onnotify/
+
+onotify 빌드, 배포까지 다하면
+
+./cleos.sh transfer jysjysjys123 wjdwlsgks123 "1.0000 EOS" "memo"
+
+./cleos.sh get table jysjysjys123 jysjysjys123 out  ($ cleos get table ${field} ${contract} ${table})
+
+
+문제
+1. 입금된 내역 조회
+
+2. 각 테이블에 name type 변수를 선언해서 EOS를 보낸 사람 또는 EOS를 받은 사람
+ 그리고 얼마를 보내고 받았는지 기록하는 테이블을 만들고 on_notify 액션을 수정하시오
+
+예시 : 입출금 횟수마다 따로 저장하는게 아니고 각 계정마다 누적금액을 저장할 수 있도록
+
+출금 테이블
+
+A: 100.5000 EOS
+B: 50.0000 EOS
+C: 10.0000 EOS
+
+입금 테이블
+
+D: 1.0000 EOS
+E: 0.50000 EOS
+
+
+./cleos.sh push action jysjysjys123 insertkey '[]' -p jysjysjys123
+
+./cleos.sh get table jysjysjys123 jysjysjys123 autokeys
+---------------------------------------------------------------------
+
+** 7/23 **
+
+available_primary_key()
+
+0 a 1.0000 EOS
+1 b 2.0000 EOS
+2 a 3.0000 EOS
+3 a 5.0000 EOS
+4 c 1.0000 EOS
+
+on_notify 액션이랑 같이
+
+테이블 이름 꼭 바꾸기
+MODIFY 안써도됨
+emplace만
+
+시간남은 사람들은 eraseall 만들어보기
+
+inline action
+- 액션안에 다른 액션이 실행된다
+
+
+./cleos.sh set account permission jysjysjys123 active --add-code
+
+
+./cleos.sh push action jysjysjys123 dummy '["jysjysjys123"]' -p jysjysjys123
+
+
+/* 2번째 문제
+
+Scope를 바꿔서
+아래처럼 만들기
+0 a 1.0000 EOS
+1 a 2.0000 EOS
+2 a 3.0000 EOS
+
+0 b 1.0000 EOS
+1 b 2.0000 EOS
+2 b 3.0000 EOS
+
+0 c 1.0000 EOS
+1 c 2.0000 EOS
+2 c 3.0000 EOS
+ */
+
+
+인라인 액션
+
+1. 본인 내부의 액션 실행
+2. 외부 컨트랙트 계정의 액션 실행
+
+
+
+
+
+
+
+ send_summary(user, " successfully erased record from addressbook");
+
+
+[[eosio::action]]
+  void notify(name user, std::string msg) {
+    require_auth(get_self());
+    require_recipient(user); //알림
+  }
+
+
+./cleos.sh get table
+로 key limit 보기
+
+---------------------------------------------------------------------
+
+** 7/24 **
+
+scope조회
+
+./cleos.sh get scope
+
+./cleos.sh get scope eosio.token
+
+./cleos.sh get scope jysjysjys123
+---------------------------------------------------------------------
+
+
+바이오스부트
+git clean-t
+
+git checkout .
+
+
+24번 ip : 192.168.1.75
+http endpoint : 8010
+p2p endpoint : 9010
+
+cloes.sh 파일에 ip와 포트 ip 입력
+
+1. 지갑 생성 - 지갑 키 입력
+2. cleos.sh 연결
+3. 계정 생성 - baekseokinit으로부터 eos가져오기 - 스테이킹 - bp출마 - 투표
+4. nodeos 시작
+5. ./cleos.sh get info를 통해서 본인이 블록 생성하는지 확인
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
